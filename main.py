@@ -1,5 +1,5 @@
 import tweepy
-import colorDetection
+import twitterColorDetection
 
 #Get keys and split them into their variables
 

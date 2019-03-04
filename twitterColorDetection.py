@@ -4,6 +4,10 @@ import time
 import requests
 
 def findColor(x1, y1, x2, y2, im):
+    """
+    Input: Corners of a box and an image
+    Output: Tuple of RGB color values
+    """
     boundingBox = (x1,y1,x2,y2)         
     boundingRegion = im.crop(boundingBox)   
     boxX = x2 - x1
@@ -31,7 +35,9 @@ def findColor(x1, y1, x2, y2, im):
 
 
 def getRGB():
-
+    """
+    Outputs the RGB color values of the tower
+    """
     #Get the image and its path
     #imagePath = aquireImage()
     imagePath = "tower.jpg"
@@ -47,6 +53,10 @@ def getRGB():
     return([baseColor, topColor])
 
 def getColorNames(baseColor, topColor):
+    """
+    Inputs: Base and top RGB values
+    Output: List of tower colors with base first and top second
+    """
     if (100 < baseColor[0] < 200):
             if (50 < baseColor[1] < 150):
                     if (50 < baseColor[2] < 150):

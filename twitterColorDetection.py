@@ -18,29 +18,32 @@ def findColor(x1, y1, x2, y2, im):
             pixelColor = boundingRegion.getpixel((x,y))
 
             #Iterate through R, G, and B value and add to output
-            for i in totalColor:
-                totalColor[i] = totalColor[i] + pixelColor[i]
+            totalColor[0] = totalColor[0] + pixelColor[0]
+            totalColor[1] = totalColor[1] + pixelColor[1]
+            totalColor[2] = totalColor[2] + pixelColor[2]
 
     #Find RGB value throughout image
     totalPixels = boxX * boxY
-    for i in totalColor:
+    for i in range(len(totalColor)):
         totalColor[i] = int(totalColor[i]/totalPixels)
 
     return (totalColor[0], totalColor[1], totalColor[2])
 
 
-def calculateTowerColor():
+def getRGB():
 
     #Get the image and its path
-    imagePath = aquireImage()
+    #imagePath = aquireImage()
+    imagePath = "tower.jpg"
 
     if (imagePath == -1):
         raise Exception('Image path not found')
 
     im = Image.open(imagePath)
 
-    #Bounding box for the base of the tower
+    baseColor = findColor(718, 217, 731, 358, im)
+    topColor = findColor(695,139,728,179, im)
 
+    return([baseColor, topColor])
 
-
-calculateTowerColor()
+print(getRGB())

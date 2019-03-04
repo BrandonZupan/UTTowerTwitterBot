@@ -73,37 +73,6 @@ G = int(G/totalPix)
 B = int(B/totalPix)
 topColor = (R,G,B)
 
-#Calculate color of the sky to determine if its night
-skyBox = (0,0,200,200)
-skyRegion = im.crop(skyBox)   
-skyX = 200
-skyY = 200
-
-#skyRegion.show()
-
-skyColor = (42,42,42)
-R = 0
-G = 0
-B = 0
-
-#Check each pixel and see what color it is, then add it to a total for each color
-for y in range(skyY):     
-    for x in range(skyX):
-        color = skyRegion.getpixel((x,y))
-
-        R = R + color[0]
-        G = G + color[1]
-        B = B + color[2]
-
-#Get average color for R,G,and B based on total from loop and amount of pixels in photo
-totalPix = skyX * skyY
-R = int(R/totalPix)
-G = int(G/totalPix)
-B = int(B/totalPix)
-skyColor = (R,G,B)
-
-#print(skyColor)
-
 #Get a cropped image of the tower for the output
 towerBox = (502,73,930,478)
 outPic = im.crop(towerBox)
@@ -135,17 +104,7 @@ def writeData(colorTuple):
 #writeData(baseColor)
 #writeData(topColor)
 
-#Figure out the actual color of the tower
-skyTotal = 0
-
-for c in skyColor:
-        skyTotal += c
-
-if (skyTotal > 250):
-        baseColorName = "Nothing"
-        baseColorNumber = "3"
-
-elif (100 < baseColor[0] < 200):
+if (100 < baseColor[0] < 200):
         if (50 < baseColor[1] < 150):
                 if (50 < baseColor[2] < 150):
                         baseColorName = "Orange"

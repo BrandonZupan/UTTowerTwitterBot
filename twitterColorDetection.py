@@ -90,5 +90,16 @@ def getColorNames(baseColor, topColor):
 
     return((baseColorName, topColorName))
 
-rgb = getRGB()
-print(getColorNames(rgb[0], rgb[1]))
+def createImage(x1,y1,x2,y2,im):
+    """
+    Inputs: 4 points and an image
+    Output: Path to a cropped version of the image
+    """
+    path = "out.jpg"
+    cropBox = (x1,y1,x2,y2)
+    outPic = im.crop(cropBox)
+    outPic.save(path)
+    return path
+
+#rgb = getRGB()
+#print(getColorNames(rgb[0], rgb[1]))

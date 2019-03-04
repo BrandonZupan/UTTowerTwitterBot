@@ -21,7 +21,7 @@ baseRegion = im.crop(baseBox)
 baseX = 731 - 718
 baseY = 358 - 217
 
-baseRegion.show()
+#baseRegion.show()
 
 baseColor = (42,42,42)
 R = 0

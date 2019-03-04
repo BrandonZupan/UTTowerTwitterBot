@@ -1,2 +1,14 @@
 # Key file
 twitterkeys.txt
+
+# Image data
+out.jpg
+tower.jpg
+data.txt
+
+# Pycache
+__pycache__/
+
+#idk what this is
+.gitignore~
+..gitignore.un~

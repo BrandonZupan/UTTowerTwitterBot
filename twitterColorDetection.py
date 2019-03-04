@@ -39,8 +39,8 @@ def getRGB():
     Outputs the RGB color values of the tower
     """
     #Get the image and its path
-    #imagePath = aquireImage()
-    imagePath = "tower.jpg"
+    imagePath = aquireImage()
+    #imagePath = "tower.jpg"
 
     if (imagePath == -1):
         raise Exception('Image path not found')

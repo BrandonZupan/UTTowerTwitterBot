@@ -8,5 +8,8 @@ def aquireImage():
     with open("tower.jpg","wb") as handler:
         handler.write(img_data)
         print("Image downloaded")
+        path = "tower.jpg"
+
+    return path
 
 #aquireImage()

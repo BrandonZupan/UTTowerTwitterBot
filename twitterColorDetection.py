@@ -26,6 +26,8 @@ def findColor(x1, y1, x2, y2, im):
     for i in totalColor:
         totalColor[i] = int(totalColor[i]/totalPixels)
 
+    return (totalColor[0], totalColor[1], totalColor[2])
+
 
 def calculateTowerColor():
 

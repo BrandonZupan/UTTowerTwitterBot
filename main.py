@@ -27,8 +27,11 @@ api = tweepy.API(auth)
 
 towerColorRGB = twitterColorDetection.getRGB()
 towerColor = twitterColorDetection.getColorNames(towerColorRGB[0], towerColorRGB[1])
+#towerColor = "yeet"
 
 #Check to see if the color is tweet worthy
+print(towerColor)
+
 if (towerColor[0] and towerColor[1] == "White"):
     raise Exception("Tower color is not worthy of a tweet")
 
@@ -49,7 +52,7 @@ else:
         title = titleContainer[0].getText()
         titleList = title.split()
         tweetText = ' '.join(titleList[3:-3])
-        print(tweetText)
+        #print("Message: " + tweetText)
     except:
         #To do, create tweetText and make it work, also make it tweet color if the default message is on website
         print('yeet')
@@ -58,7 +61,8 @@ else:
     im = Image.open('tower.jpg')
     tweetImage = twitterColorDetection.createImage(502,73,930,478, im)
 
-    api.update_with_media(tweetImage, tweetText)
+    #api.update_with_media(tweetImage, tweetText)
+    print(tweetText)
 
 """
 #Only tweet if the tower is not white

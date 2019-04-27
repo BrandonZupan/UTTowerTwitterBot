@@ -9,7 +9,8 @@ def findColor(x1, y1, x2, y2, im):
     Output: Tuple of RGB color values
     """
     boundingBox = (x1,y1,x2,y2)         
-    boundingRegion = im.crop(boundingBox)   
+    boundingRegion = im.crop(boundingBox) 
+    #boundingRegion.show()  
     boxX = x2 - x1
     boxY = y2 - y1
     

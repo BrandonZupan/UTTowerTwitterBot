@@ -71,7 +71,7 @@ else:
     im = Image.open('tower.jpg')
     tweetImage = twitterColorDetection.createImage(502,73,930,478, im)
 
-    #api.update_with_media(tweetImage, tweetText)
+    api.update_with_media(tweetImage, tweetText)
     print(tweetText)
 
 """

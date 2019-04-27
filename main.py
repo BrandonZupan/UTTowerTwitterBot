@@ -55,7 +55,17 @@ else:
         #print("Message: " + tweetText)
     except:
         #To do, create tweetText and make it work, also make it tweet color if the default message is on website
-        print('yeet')
+        if (towerColor[0] == "Orange"):
+            tweetText = "The tower is orange today!"
+
+        elif ((towerColor[0] == "White") and (towerColor[1] == "Orange")):
+            tweetText = "The tower is orange and white today!"
+
+        elif (towerColor[0] == "Dark"):
+            tweetText = "The tower is dark today"
+
+        else:
+            raise Exception("Error: Unable to generate twitter message")
 
     #Get image
     im = Image.open('tower.jpg')

@@ -11,15 +11,16 @@ class Tower:
         self.image = None
         self.top_color = None
         self.base_color = None
-        self.URL = "http://wwc.instacam.com/instacaming/UTAUS/UTAUS_l.jpg"
+        self.URL = "http://wwc.instacam.com/instacamimg/UTAUS/UTAUS_l.jpg"
 
     def set_image(self):
         """Returns an image object for further analysis"""
-        img_data = requests.get(self.URL)
-        tower_image = Image.open(self.URL)
-        img.show()
+        #img_data = requests.get(self.URL)
+        #tower_image = Image.open(BytesIO((img_data.content))
+        tower_image = Image.open("UTAUS_1.jpg")
+        tower_image.show()
 
-        #
+        
 
 tower = Tower()
 

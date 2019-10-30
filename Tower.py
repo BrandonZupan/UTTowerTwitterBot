@@ -15,9 +15,8 @@ class Tower:
 
     def set_image(self):
         """Returns an image object for further analysis"""
-        #img_data = requests.get(self.URL)
-        #tower_image = Image.open(BytesIO((img_data.content))
-        tower_image = Image.open("UTAUS_1.jpg")
+        img_data = requests.get(self.URL)
+        tower_image = Image.open(BytesIO((img_data.content)))
         tower_image.show()
 
         

@@ -51,3 +51,10 @@ class Tower:
             self.r = int(self.r/total_pixels)
             self.g = int(self.g / total_pixels)
             self.b = int(self.b / total_pixels)
+
+        def show_section(self, picture):
+            """
+            Shows the section of the tower for testing
+            Input: The picture
+            Opens the section of the image
+            """

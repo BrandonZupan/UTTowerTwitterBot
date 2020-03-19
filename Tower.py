@@ -8,20 +8,20 @@ from io import BytesIO
 
 class Tower:
     def __init__(self):
-        # Run acquire image method to get one on init
-        self.image = None
-        self.top_color = None
-        self.base_color = None
-        
         # Constants
         self.URL = "http://wwc.instacam.com/instacamimg/UTAUS/UTAUS_l.jpg"
-        self.BASE_COORDS = (718, 217, 731, 358)
-        self.TOP_COORDS = (695, 139, 728, 179)
+        self.BASE_COORDINATES = (718, 217, 731, 358)
+        self.TOP_COORDINATES = (695, 139, 728, 179)
+
+        self.image = None
+        self.base = self.TowerSection(*self.BASE_COORDINATES)
+        self.top = self.TowerSection(*self.TOP_COORDINATES)
         
     def set_image(self):
         """Returns an image object for further analysis"""
         img_data = requests.get(self.URL)
-        self.image = Image.open(BytesIO((img_data.content)))
+        self.image = Image.open(BytesIO(img_data.content))
+        self.image.show()
 
     class TowerSection:
         def __init__(self, x1, y1, x2, y2):
@@ -29,6 +29,7 @@ class Tower:
             self.x2 = x2
             self.y1 = y1
             self.y2 = y2
+
             self.r = 0
             self.g = 0
             self.b = 0
@@ -50,15 +51,3 @@ class Tower:
             self.r = int(self.r/total_pixels)
             self.g = int(self.g / total_pixels)
             self.b = int(self.b / total_pixels)
-
-
-
-
-
-tower = Tower()
-
-tower.set_image()
-
-#tower.image.show()
-
-print(f"Top: {tower.average_color(tower.image, tower.TOP_COORDS)}")

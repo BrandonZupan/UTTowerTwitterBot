@@ -1,58 +1,58 @@
-#Brandon Zupan
-#Class for UT Tower
+# Brandon Zupan
+# Class for UT Tower
 
 import requests
 from PIL import Image
 from io import BytesIO
 
+
 class Tower:
     def __init__(self):
-        #Run aquire image method to get one on init
+        # Run acquire image method to get one on init
         self.image = None
         self.top_color = None
         self.base_color = None
         
-        #Constants
+        # Constants
         self.URL = "http://wwc.instacam.com/instacamimg/UTAUS/UTAUS_l.jpg"
         self.BASE_COORDS = (718, 217, 731, 358)
         self.TOP_COORDS = (695, 139, 728, 179)
         
-        
-
     def set_image(self):
         """Returns an image object for further analysis"""
         img_data = requests.get(self.URL)
         self.image = Image.open(BytesIO((img_data.content)))
 
-        
-    def average_color(self, picture, COORDS):
-        """Find average color of an area of a picture"""
-        r = 0
-        g = 0
-        b = 0
-        color = 0
+    class TowerSection:
+        def __init__(self, x1, y1, x2, y2):
+            self.x1 = x1
+            self.x2 = x2
+            self.y1 = y1
+            self.y2 = y2
+            self.r = 0
+            self.g = 0
+            self.b = 0
 
-        #victim = picture.crop(COORDS)
-        #victim.show()
+        def find_average_color(self, picture):
+            """
+            Finds the average color for a section of the tower
+            Input: The picture
+            Sets the section's RGB values
+            """
+            for x in range(self.x1, self.x2):
+                for y in range(self.y1, self.y2):
+                    color = picture.getpixel((x, y))
+                    self.r += color[0]
+                    self.g += color[1]
+                    self.b += color[2]
 
-        #Iterate through pixels
-        #print(range(COORDS[0], COORDS[2]))
-        print(picture.size)
-        for y in range(COORDS[0], COORDS[2]):
-            for x in range(COORDS[1], COORDS[3]):
-                #print(f"x{x} y{y} ")
-                color = picture.getpixel((x,y))
-                r = r + color[0]
-                g = g + color[1]
-                b = b + color[2]
+            total_pixels = (self.y2 - self.y1) * (self.x2 - self.x1)
+            self.r = int(self.r/total_pixels)
+            self.g = int(self.g / total_pixels)
+            self.b = int(self.b / total_pixels)
 
-        total_pixels = (COORDS[2] - COORDS[0]) * (COORDS[3] - COORDS[1])
-        r = int(r/total_pixels)
-        g = int(g/total_pixels)
-        b = int(b/total_pixels)
 
-        return (r,g,b)
-        
+
 
 
 tower = Tower()
